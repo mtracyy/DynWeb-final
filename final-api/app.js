@@ -6,14 +6,14 @@ const port = process.env.PORT || 4000;
 const firebase = require("firebase/app");
 
 const firebaseConfig = {
-    apiKey: "AIzaSyC8lGR3cXo81GAJQqY3nhXsx2X3Dig6a70",
-    authDomain: "dynweb-exercise-four.firebaseapp.com",
-    databaseURL: "https://dynweb-exercise-four.firebaseio.com",
-    projectId: "dynweb-exercise-four",
-    storageBucket: "dynweb-exercise-four.appspot.com",
-    messagingSenderId: "728469348627",
-    appId: "1:728469348627:web:7d0cacc3c3aae89c463ae6"
-};
+    apiKey: "AIzaSyBw_pRdDAEJlsFGF_4rMd2kQIeBdbQ_5s4",
+    authDomain: "dynweb-final.firebaseapp.com",
+    databaseURL: "https://dynweb-final.firebaseio.com",
+    projectId: "dynweb-final",
+    storageBucket: "dynweb-final.appspot.com",
+    messagingSenderId: "1060203938744",
+    appId: "1:1060203938744:web:aac416a100ce6fc913854d"
+  };
 
 //initialize firebase
 firebase.initializeApp(firebaseConfig);
@@ -21,15 +21,15 @@ firebase.initializeApp(firebaseConfig);
 //create base route
 app.get("/", (req,res) => res.send("Data for final"));
 
-// const indexRoute = require('./routes/index.js');
-// const aboutRoute = require('./routes/about.js');
+const indexRoute = require('./routes/index.js');
+const singlePostRoute = require('./routes/singlePost.js');
 //
 //serve static files
 app.use('/static', express.static('public'));
 //
 // //routing in express
-// app.use('/', indexRoute);
-// app.use('/about', aboutRoute);
+app.use('/', indexRoute);
+app.use('/post', singlePostRoute);
 
 app.listen(port, () =>
     console.log(`Example app listening at http://localhost:${port}`)

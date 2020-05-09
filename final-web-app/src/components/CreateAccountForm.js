@@ -3,7 +3,7 @@ import React from "react";
 function CreateAccountForm({CreateAccountFunction}) {
     return (
         <div>
-            <form className="EntryForm" onSubmit={(e) => CreateAccountFunction(e)}>
+            <form className="EntryForm Form" onSubmit={(e) => CreateAccountFunction(e)}>
                 <label htmlFor="createEmail">Email</label>
                 <input type="email" name="createEmail"/>
                 <label htmlFor="createPassword">Password</label>

@@ -4,3 +4,83 @@
     max-width: 400px;
     margin: 40px auto;
 }
+
+.Wrapper {
+    margin: 0 auto;
+    max-width: 1040px;
+}
+
+.Header {
+    border-bottom: 1px solid black;
+    width: 100%
+}
+
+.Header_wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1040px;
+    padding: 15px 25px;
+}
+
+.Header_nav a {
+    color: black;
+    font-weight: bold;
+    margin: 0 10px;
+    padding: 2px 5px;
+    text-decoration: none;
+}
+
+.Header_nav a:last-of-type {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.Form {
+    display: flex;
+    flex-direction: column;
+}
+
+.Form label {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    opacity: 0.7;
+    text-transform: uppercase;
+}
+
+.Form input {
+    font-size: 16px;
+    margin-bottom: 20px;
+    padding: 8px 5px;
+}
+
+.Form button {
+    font-size: 16px;
+    padding: 10px 5px;
+}
+
+.CreateWrapper {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.CreateWrapper > div,
+.CreateWrapper > form {
+    flex-basis: 50%;
+    width: 100%;
+}
+
+.SiteInfo {
+    padding-left: 50px;
+}
+
+.LoginForm {
+    margin: 0;
+    max-width: 500px;
+}
+
