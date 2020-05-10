@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import axios from "axios";
 import { Route, BrowserRouter as Router, Redirect } from "react-router-dom";
 import * as firebase from "firebase/app";
 import "firebase/auth";
@@ -99,19 +100,81 @@ function App() {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then(function (response) {
-          console.log("VALID ACCOUNT CREATE", response);
-          setLoggedIn(true);
+        console.log("VALID ACCOUNT CREATE", response);
+        setLoggedIn(true);
       })
       .catch(function(e) {
-          console.log("CREATE ACCOUNT ERROR", e);
+        console.log("CREATE ACCOUNT ERROR", e);
       });
+  }
+
+  function createPostWithImage(e) {
+    e.preventDefault();
+
+    let postTitle = e.currentTarget.postTitle.value;
+    let text = e.currentTarget.postText.value;
+    const idFromTitle = postTitle.replace(/\s+/g, "-").toLowerCase().substr(0, 16);
+    let userID = userInfo.uid;
+
+    // if there's an image
+    if (e.currentTarget.postImage.files[0]) {
+        const storageService = firebase.storage();
+        const storageRef = storageService.ref();
+        const fileReference = e.currentTarget.postImage.files[0];
+        const uploadTask = storageRef
+        .child(`${fileReference.name}`)
+        .put(fileReference);
+
+        uploadTask.on(
+            'state_changed',
+            (snapshot) => {},
+            (error) => {
+                console.log(error);
+                },
+            () => {
+                // Do something once upload is complete
+                uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+                //send data to API
+                    axios
+                      .get(
+                          //my API endpoint
+                          //local:
+                          `http://localhost:4000/create?postTitle=${postTitle}&text=${text}&id=${idFromTitle}&userID=${userID}&image=${downloadURL}`
+                          //production:
+                          //`https://gentle-meadow-83076.herokuapp.com/`
+                      )
+                      .then(function (response) {
+                          // handle success
+                          console.log('response', response);
+                      })
+                      .catch(function (error) {
+                          // handle error
+                          console.log(error);
+                      });
+                });
+            }
+        );
+    } else {
+        axios
+            .get(
+                //my API endpoint
+                //local:
+                `http://localhost:4000/create?postTitle=${postTitle}&text=${text}&id=${idFromTitle}&userID=${userID}`
+                //production:
+                //`https://gentle-meadow-83076.herokuapp.com/`
+            )
+            .then(function (response) {
+                // handle success
+                console.log('response', response);
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            });
     }
+  }
 
-    // function UploadImage(e) {
-    //
-    // }
-
-    if (loading) return null
+if (loading) return null
 
   return (
     <div className="App">
@@ -120,7 +183,8 @@ function App() {
         <Route exact path="/">
           {!loggedIn ? (<Redirect to="/login"/>
             ) : (
-              <Home userInfo={userInfo}/>
+              <Home userInfo={userInfo}
+                    createPostWithImage={createPostWithImage}/>
             )}
         </Route>
         <Route exact path="/post/:id">

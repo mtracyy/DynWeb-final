@@ -11,7 +11,11 @@ const posts = db.collection("posts");
 router.get("/", (req,res) => res.send("Please include an ID"));
 router.get("/:id", (req,res) => {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+
     const queryID = req.params.id;
 
     posts

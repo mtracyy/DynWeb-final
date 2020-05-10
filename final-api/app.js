@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 4000;
 
-const firebase = require("firebase/app");
+const firebase = require("firebase");
 
 const firebaseConfig = {
     apiKey: "AIzaSyBw_pRdDAEJlsFGF_4rMd2kQIeBdbQ_5s4",
@@ -19,17 +19,17 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 //create base route
-app.get("/", (req,res) => res.send("Data for final"));
-
 const indexRoute = require('./routes/index.js');
 const singlePostRoute = require('./routes/singlePost.js');
+const createPostRoute = require('./routes/createPost.js');
 //
 //serve static files
-app.use('/static', express.static('public'));
+app.use('/static', express.static("public"));
 //
 // //routing in express
 app.use('/', indexRoute);
 app.use('/post', singlePostRoute);
+app.use('/create', createPostRoute);
 
 app.listen(port, () =>
     console.log(`Example app listening at http://localhost:${port}`)

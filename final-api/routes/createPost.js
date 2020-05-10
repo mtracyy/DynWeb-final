@@ -11,14 +11,19 @@ const posts = db.collection("posts");
 // /create
 router.get("/", (req,res) => {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+
     const queryParams = req.query;
+    res.send(queryParams);
 
     posts
-        .doc(idFromTitle)
+        .doc(queryParams.id)
         .set(queryParams)
         .then(function (doc) {
-            res.send({'success': "Successful submission"});
+            res.send({success: "Successful submission"});
         })
         .catch(function (error) {
             console.log("Error", error);

@@ -9,7 +9,10 @@ const posts = db.collection("posts");
 //(req, res) is (request, response)
 router.get("/", (req,res) => {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
     //create empty array
     const postsArray = [];
     //get posts

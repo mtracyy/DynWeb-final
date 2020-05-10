@@ -7,7 +7,6 @@ function SinglePost() {
     const { id } = useParams();
 
     useEffect(() => {
-    // if (city) {
         axios
             .get(
                 //my API endpoint
@@ -18,17 +17,18 @@ function SinglePost() {
             )
             .then(function (response) {
                 // handle success
-                setAllPosts(response.data);
+                setPostData(response.data);
             })
             .catch(function (error) {
                 // handle error
                 console.log(error);
             });
-        // }
     }, []);
 
     return (
         <div className="SinglePost Wrapper">
+            <h1>{postData.postTitle}</h1>
+            <img src={postData.image} alt={postData.id}/>
             <p>{postData.text}</p>
         </div>
     )
