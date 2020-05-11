@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 import {useParams} from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faThumbsUp, faCommentAlt } from '@fortawesome/free-solid-svg-icons'
 
 function SinglePost() {
     const [postData, setPostData] = useState({});
@@ -26,10 +28,18 @@ function SinglePost() {
     }, []);
 
     return (
-        <div className="SinglePost Wrapper">
-            <h1>{postData.postTitle}</h1>
-            <img src={postData.image} alt={postData.id}/>
-            <p>{postData.text}</p>
+        <div className="Wrapper">
+            <div className="SinglePost">
+                <div className="postDesc">
+                    <h1>{postData.postTitle}</h1>
+                    <p>{postData.text}</p>
+                    <div className="socialBtns">
+                        <button><FontAwesomeIcon icon={faThumbsUp}/> Like</button>
+                        <button><FontAwesomeIcon icon={faCommentAlt}/> Comment</button>
+                    </div>
+                </div>
+                <img src={postData.image} alt={postData.id}/>
+            </div>
         </div>
     )
 }

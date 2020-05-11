@@ -8,8 +8,8 @@ function CreateAccount({CreateAccountFunction}) {
             <div className="CreateWrapper">
                 <CreateAccountForm CreateAccountFunction={CreateAccountFunction}/>
                 <div className="SiteInfo">
-                    <h2>About Logo Site</h2>
-                    <p>Lorem ipsum...</p>
+                    <h2>Join AstrologyMemes today!</h2>
+                    <p>a social network for astrology lovers</p>
                 </div>
             </div>
         </div>

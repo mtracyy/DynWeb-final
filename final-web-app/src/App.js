@@ -94,6 +94,7 @@ function App() {
   function CreateAccountFunction(e) {
     e.preventDefault();
     let email = e.currentTarget.createEmail.value;
+    let username = e.currentTarget.createUsername.value;
     let password = e.currentTarget.createPassword.value;
 
     firebase
@@ -101,6 +102,9 @@ function App() {
       .createUserWithEmailAndPassword(email, password)
       .then(function (response) {
         console.log("VALID ACCOUNT CREATE", response);
+        response.user.updateProfile({
+            displayName: username
+        })
         setLoggedIn(true);
       })
       .catch(function(e) {
@@ -172,6 +176,7 @@ function App() {
                 console.log(error);
             });
     }
+    window.location.reload();
   }
 
 if (loading) return null
@@ -185,6 +190,12 @@ if (loading) return null
             ) : (
               <Home userInfo={userInfo}
                     createPostWithImage={createPostWithImage}/>
+            )}
+        </Route>
+        <Route exact path="/profile">
+          {!loggedIn ? (<Redirect to="/login"/>
+            ) : (
+              <UserProfile userInfo={userInfo}/>
             )}
         </Route>
         <Route exact path="/post/:id">

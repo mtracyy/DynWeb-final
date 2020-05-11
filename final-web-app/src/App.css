@@ -1,18 +1,320 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+body, html {
+    background-attachment: fixed;
+    background-image: url("space-art2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: hue;
+    background-position: center;
+    height:  100%;
+    color: white;
+}
+::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.App {
+    display: block;
+    height: 100vh;
+    max-height: 100vh;
+    margin: 0 0;
+    padding: 0;
+    max-width: 100vw;
+    width: 100vw;
+}
+
+.bottomLine {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.chooseSign {
+    align-content: center;
+    height: 100%;
+    max-height: 100px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 25px;
+    color: white;
+    text-align: center;
+}
+
+.chooseSign h2 {
+    font-size: 35px;
+    margin: 50px 0 30px 0;
+    font-family: Quicksand;
+}
+
+.SignOptions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.SignOptions a {
+    background-color: #494373;
+    color: white;
+    display: inline-block;
+    margin: 3px 5px;
+    padding: 5px 10px;
+    text-decoration: none;
+    border:0.1em solid rgba(255,255,255, 0.2);
+    border-radius:1em;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    font-size: 12px;
+    text-align:center;
+    transition: all 0.4s ease;
+}
+
+.SignOptions a:hover {
+    border:0.1em solid rgba(255,255,255, 0.8);
+    transition: all 0.4s ease;
+}
+
+.CreatePost {
+    width: 60%;
+}
+
+.CreatePostForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.CreatePostForm label {
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 5px 0;
+    opacity: 0.9;
+    text-transform: uppercase;
+}
+
+.CreatePostForm input:not(.fileUpload) {
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding: 8px 5px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-sizing: border-box;
+    height: 50px;
+    outline: none;
+    resize: vertical;
+    width: 100%;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.CreatePostForm input:not(.fileUpload):not(:placeholder-shown) {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: black;
+    transition: 0.5s;
+}
+.CreatePostForm input:not(.fileUpload):focus {
+    border: 2px solid #F27A5E;
+}
+
+.CreatePostForm .fileUpload {
+    width: min-content;
+}
+
+.CreatePostForm button {
+    align-self: flex-end;
+    font-size: 16px;
+    padding: 10px 5px;
+    width: 170px;
+    height: 40px;
+    line-height: 1;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 3px solid #494373;
+    background: #494373;
+    color: white;
+    border-radius: 40px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.CreatePostForm button:hover {
+    background: white;
+    color: #494373;
+    transition: 0.5s;
+}
+
+.CreateWrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /*margin-top: 20px;*/
+}
+
+.CreateWrapper > div,
+.CreateWrapper > form {
+    flex-basis: 50%;
+    width: 100%;
+}
+
 .EntryForm {
     display: flex;
     flex-direction: column;
     max-width: 400px;
-    margin: 40px auto;
+    margin: 20px 0;
 }
 
-.Wrapper {
+.feed {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.feed a {
+    text-decoration: none;
+    color: white;
+    font-family: Quicksand;
+}
+
+.feed .imageContainer {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.feed .imageContainer img{
+    max-width: none;
+    width: 90%;
+    height: 90%;
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    right: -9999px;
+    bottom: -9999px;
+    margin: auto;
+}
+
+.feed .feedPostContainer {
+    background-color: rgba(51, 47, 80, 0.8);
+    border-radius: 20px 20px;
+    width: 48%;
+    /*margin: 10px;*/
+}
+
+.feed .feedPostContainer p {
+    padding: 5px 30px;
+}
+
+.feed .feedPostContainer h3 {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 8px 30px;
+}
+
+.Form {
+    display: flex;
+    flex-direction: column;
+}
+
+.Form label {
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 5px 0;
+    opacity: 0.9;
+    text-transform: uppercase;
+}
+
+.Form input:not(.fileUpload) {
+    font-size: 16px;
+    margin-bottom: 30px;
+    padding: 8px 5px;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-sizing: border-box;
+    height: 50px;
+    outline: none;
+    /*padding: 12px 20px;*/
+    resize: none;
+    width: 100%;
+}
+
+.Form .fileUpload {
+}
+
+.Form button {
+    align-self: flex-end;
+    font-size: 16px;
+    padding: 10px 5px;
+    margin-top: 20px;
+    width: 170px;
+    height: 40px;
+    line-height: 1;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 3px solid #494373;
+    background: #494373;
+    color: white;
+    border-radius: 40px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.Form button:hover {
+    background: white;
+    color: #494373;
+}
+
+.Home_wrapper {
     margin: 0 auto;
     max-width: 1040px;
+    height: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    /*justify-content: center;*/
+}
+
+/*.Home_wrapper h1 {*/
+/*    margin-top: 100px;*/
+/*}*/
+
+.Home_wrapper .feed_label {
+    margin-top: 50px;
+}
+
+.Home_header_wrapper {
+    margin-top: 100px;
+    margin-bottom: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Home_header_wrapper h1 {
+    border-radius: 20px 20px;
+    background-color: rgba(242, 113, 102, 0.2);
+    font-family: Quicksand;
+    padding: 80px 50px;
+    order: 2;
+}
+
+.Header_logo {
+    color: white;
+    text-decoration: none;
 }
 
 .Header {
-    border-bottom: 1px solid black;
-    width: 100%
+    font-family: Quicksand;
+    width: 100%;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .Header_wrapper {
@@ -26,7 +328,7 @@
 }
 
 .Header_nav a {
-    color: black;
+    color: white;
     font-weight: bold;
     margin: 0 10px;
     padding: 2px 5px;
@@ -38,59 +340,168 @@
     margin-left: 0;
 }
 
-.Form {
+.HoroscopeCard {
+    background-color: #3e3861;
+    border-radius: 20px 20px;
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+    margin-top: 20px;
+    padding: 10px 0 0 0;
+    text-align: center;
+    max-height: fit-content;
+    height: 100%;
+}
+
+.HoroscopeCard p {
+    align-self: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 20px 20px;
+    border:0.1em solid #D97179;
+    padding: 20px;
+    margin-top: 60px;
+    max-width: 60%;
+    text-align: center;
+}
+
+.LoginForm {
+    margin: 40px 0;
+    max-width: 400px;
+    flex-basis: 40%;
+    width: 100%;
+}
+
+.Profile_wrapper {
+    height: 100%;
+    min-height: 100%;
+    margin: 0 auto;
+    max-width: 1040px;
     display: flex;
     flex-direction: column;
+    /*justify-content: center;*/
 }
 
-.Form label {
-    font-size: 12px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    opacity: 0.7;
-    text-transform: uppercase;
-}
-
-.Form input {
-    font-size: 16px;
-    margin-bottom: 20px;
-    padding: 8px 5px;
-}
-
-.Form button {
-    font-size: 16px;
-    padding: 10px 5px;
-}
-
-.CreateWrapper {
-    align-items: flex-start;
+.ProfileContent_wrapper {
+    margin: 20px auto;
+    max-width: 1040px;
+    width: 100%;
+    height: 100%;
+    max-height: fit-content;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-content: center;
+    align-items: center;
 }
 
-.CreateWrapper > div,
-.CreateWrapper > form {
-    flex-basis: 50%;
-    width: 100%;
+.Profile_wrapper h1 {
+    margin-top: 120px;
+}
+
+.ProfileCard {
+    align-self: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    max-width: 50%;
+    border-radius: 20px;
+    width: 22%;
+    padding: 15px 50px 25px 50px;
+    margin-top: 10px;
+    text-align: center;
+    /*order: 2*/
+}
+
+.ProfileCard p:not(.email) {
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.ProfileCard .email {
+    font-weight: normal;
+    font-size: 16px;
 }
 
 .SiteInfo {
     padding-left: 50px;
-}
-
-.LoginForm {
-    margin: 0;
-    max-width: 500px;
-}
-
-.SinglePost {
-    max-width: 550px;
-    padding-top: 60px;
     text-align: center;
 }
 
+.SinglePost {
+    display: flex;
+    flex-direction: row;
+    /*max-width: 550px;*/
+    text-align: center;
+    justify-content: space-between;
+
+}
+
 .SinglePost img {
+    max-width: 50%;
+    border-radius: 20px 20px;
+}
+
+.SinglePost div {
     width: 100%;
 }
+
+.SinglePost .postDesc {
+    padding: 0 50px;
+    /*margin: 0 50px;*/
+}
+
+.SinglePost .postDesc h1 {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 50px 20px;
+    font-size: 18px;
+    padding: 20px 0;
+}
+
+.SinglePost .postDesc p {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 20px 20px;
+    padding: 20px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.socialBtns {
+    text-align: right;
+}
+
+.socialBtns button {
+    background-color: rgba(255, 255, 255, 0.1);
+    border:0.1em solid rgba(255,255,255, 0.3);
+    border-radius: 2em;
+    color: rgba(255, 255, 255, 1);
+    font-size: 12px;
+    padding: 5px 10px;
+    margin: 0 5px;
+    opacity: 0.8;
+    outline: none;
+    transition: all .2s ease-in-out;
+}
+
+.socialBtns button:hover {
+    background-color: #494373;
+    color: rgba(255, 255, 255, 0.8);
+    opacity: 1;
+    transition: .3s;
+    transform: scale(1.1);
+}
+
+.Wrapper {
+    height: 100%;
+    margin: 0 auto;
+    max-width: 1040px;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /*align-items: center;*/
+}
+
+.Wrapper h1 {
+    margin-bottom: 0;
+    font-family: Quicksand;
+}
+
 

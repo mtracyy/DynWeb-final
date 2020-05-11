@@ -7,6 +7,7 @@ function Home({userInfo, createPostWithImage}) {
     const [allPosts, setAllPosts] = useState([]);
     const email = userInfo.email;
     const uid = userInfo.uid;
+    const username = userInfo.displayName;
 
     useEffect(() => {
         axios
@@ -27,42 +28,27 @@ function Home({userInfo, createPostWithImage}) {
             });
     }, []);
 
-    //create a post
-    // async function CreatePostFunction(e) {
-    //     // e.preventDefault();
-    //     let text = e.currentTarget.postText.value;
-    //     const idFromText = text.replace(/\s+/g, "-").toLowerCase().substr(0, 16);
-    //     let userID = uid;
-    //
-    //     axios
-    //         .get(
-    //             //my API endpoint
-    //             //local:
-    //             `http://localhost:4000/create?text=${text}&id=${idFromText}&userID=${userID}`
-    //             //production:
-    //             //`https://gentle-meadow-83076.herokuapp.com/`
-    //         )
-    //         .then(function (response) {
-    //             // handle success
-    //             console.log('response', response);
-    //         })
-    //         .catch(function (error) {
-    //             // handle error
-    //             console.log(error);
-    //         });
-    // }
-
     return (
-        <div className="Wrapper">
-            <h1>Welcome, {email}</h1>
-            <div className="CreatePost">
-                <h2>Add a post</h2>
-                <CreatePostForm CreatePostFunction={createPostWithImage}/>
+        <div className="Home_wrapper">
+            <div className="Home_header_wrapper">
+                <h1>Welcome, {username}</h1>
+                <div className="CreatePost">
+                    <h2>Add a post</h2>
+                    <CreatePostForm CreatePostFunction={createPostWithImage}/>
+                </div>
             </div>
-            <div className="">
-                <h2>Feed</h2>
+            <h2 className="feed_label">Feed</h2>
+            <div className="feed">
                 {allPosts.map((post, i) => (
-                    <p key={i}><a href={`/post/${post.id}`}>{post.postTitle}</a></p>
+                    <p className="feedPostContainer" key={i}>
+                        <a href={`/post/${post.id}`}>
+                            <h3>{post.postTitle}</h3>
+                            <p>{post.text}</p>
+                            <div className="imageContainer">
+                                <img src={post.image} alt={post.id}/>
+                            </div>
+                        </a>
+                    </p>
                 ))}
             </div>
         </div>
