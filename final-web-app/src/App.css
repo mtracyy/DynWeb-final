@@ -181,7 +181,7 @@ body, html {
 .feed .imageContainer {
     position: relative;
     width: 100%;
-    height: 300px;
+    height: 400px;
     overflow: hidden;
 }
 
@@ -195,13 +195,14 @@ body, html {
     right: -9999px;
     bottom: -9999px;
     margin: auto;
+    object-fit: cover;
 }
 
 .feed .feedPostContainer {
     background-color: rgba(51, 47, 80, 0.8);
     border-radius: 20px 20px;
     width: 48%;
-    /*margin: 10px;*/
+    margin-bottom: 50px;
 }
 
 .feed .feedPostContainer p {
@@ -276,15 +277,11 @@ body, html {
     min-height: 100%;
     display: flex;
     flex-direction: column;
-    /*justify-content: center;*/
 }
-
-/*.Home_wrapper h1 {*/
-/*    margin-top: 100px;*/
-/*}*/
 
 .Home_wrapper .feed_label {
     margin-top: 50px;
+    margin-bottom: 30px;
 }
 
 .Home_header_wrapper {
@@ -378,7 +375,6 @@ body, html {
     max-width: 1040px;
     display: flex;
     flex-direction: column;
-    /*justify-content: center;*/
 }
 
 .ProfileContent_wrapper {
@@ -407,7 +403,6 @@ body, html {
     padding: 15px 50px 25px 50px;
     margin-top: 10px;
     text-align: center;
-    /*order: 2*/
 }
 
 .ProfileCard p:not(.email) {
@@ -428,7 +423,6 @@ body, html {
 .SinglePost {
     display: flex;
     flex-direction: row;
-    /*max-width: 550px;*/
     text-align: center;
     justify-content: space-between;
 
@@ -445,7 +439,6 @@ body, html {
 
 .SinglePost .postDesc {
     padding: 0 50px;
-    /*margin: 0 50px;*/
 }
 
 .SinglePost .postDesc h1 {
@@ -496,7 +489,6 @@ body, html {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /*align-items: center;*/
 }
 
 .Wrapper h1 {

@@ -5,8 +5,6 @@ import CreatePostForm from "../components/CreatePostForm";
 
 function Home({userInfo, createPostWithImage}) {
     const [allPosts, setAllPosts] = useState([]);
-    const email = userInfo.email;
-    const uid = userInfo.uid;
     const username = userInfo.displayName;
 
     useEffect(() => {
@@ -14,9 +12,9 @@ function Home({userInfo, createPostWithImage}) {
             .get(
                 //my API endpoint
                 //local:
-                `http://localhost:4000/`
+                // `http://localhost:4000/`
                 //production:
-                //`https://gentle-meadow-83076.herokuapp.com/`
+                `https://gentle-meadow-83076.herokuapp.com/`
             )
             .then(function (response) {
                 // handle success
@@ -40,7 +38,7 @@ function Home({userInfo, createPostWithImage}) {
             <h2 className="feed_label">Feed</h2>
             <div className="feed">
                 {allPosts.map((post, i) => (
-                    <p className="feedPostContainer" key={i}>
+                    <div className="feedPostContainer" key={i}>
                         <a href={`/post/${post.id}`}>
                             <h3>{post.postTitle}</h3>
                             <p>{post.text}</p>
@@ -48,7 +46,7 @@ function Home({userInfo, createPostWithImage}) {
                                 <img src={post.image} alt={post.id}/>
                             </div>
                         </a>
-                    </p>
+                    </div>
                 ))}
             </div>
         </div>

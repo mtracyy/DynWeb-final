@@ -13,9 +13,9 @@ function SinglePost() {
             .get(
                 //my API endpoint
                 //local:
-                `http://localhost:4000/post/${id}`
+                // `http://localhost:4000/post/${id}`
                 //production:
-                //`https://gentle-meadow-83076.herokuapp.com/`
+                `https://gentle-meadow-83076.herokuapp.com/post/${id}`
             )
             .then(function (response) {
                 // handle success

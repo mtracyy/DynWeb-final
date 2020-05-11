@@ -60,7 +60,7 @@ function App() {
       }
       setLoading(false);
     });
-}, []);
+    }, []);
 
   function LoginFunction(e) {
     e.preventDefault();
@@ -143,13 +143,14 @@ function App() {
                       .get(
                           //my API endpoint
                           //local:
-                          `http://localhost:4000/create?postTitle=${postTitle}&text=${text}&id=${idFromTitle}&userID=${userID}&image=${downloadURL}`
+                          // `http://localhost:4000/create?postTitle=${postTitle}&text=${text}&id=${idFromTitle}&userID=${userID}&image=${downloadURL}`
                           //production:
-                          //`https://gentle-meadow-83076.herokuapp.com/`
+                          `https://gentle-meadow-83076.herokuapp.com/create?postTitle=${postTitle}&text=${text}&id=${idFromTitle}&userID=${userID}&image=${downloadURL}`
                       )
                       .then(function (response) {
                           // handle success
                           console.log('response', response);
+                          window.location.reload();
                       })
                       .catch(function (error) {
                           // handle error
@@ -163,20 +164,20 @@ function App() {
             .get(
                 //my API endpoint
                 //local:
-                `http://localhost:4000/create?postTitle=${postTitle}&text=${text}&id=${idFromTitle}&userID=${userID}`
+                // `http://localhost:4000/create?postTitle=${postTitle}&text=${text}&id=${idFromTitle}&userID=${userID}`
                 //production:
-                //`https://gentle-meadow-83076.herokuapp.com/`
+                `https://gentle-meadow-83076.herokuapp.com/create?postTitle=${postTitle}&text=${text}&id=${idFromTitle}&userID=${userID}`
             )
             .then(function (response) {
                 // handle success
                 console.log('response', response);
+                window.location.reload();
             })
             .catch(function (error) {
                 // handle error
                 console.log(error);
             });
     }
-    window.location.reload();
   }
 
 if (loading) return null
